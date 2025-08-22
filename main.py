@@ -48,9 +48,15 @@ if found == True:
 
     r = requests.get(f"https://api.curseforge.com/v1/mods/{selected_modpack_id}/files", headers = headers)
     file_data = r.json()
-    print(file_data)
     for file in file_data['data']:
-        server_file = file['serverPackFileId']
-        print (server_file)
+        server_file_id = file['serverPackFileId']
+        file = requests.get(f"https://www.api.curseforge.com/v1/mods/{selected_modpack_id}/files/{server_file_id}", headers=headers)
+        download_url = file.json()['data']['downloadUrl']
+        print(f"Download Url: {download_url}")
+        dl_response = requests.get(download_url, stream=True)
+        with open(f"{selected_modpack_name}.zip", 'wb') as f:
+            for chunk in dl_response.iter_content(chunk_size=8192):
+                f.write(chunk)
+        break
     else:
         print("No server pack found for this modpack.")
