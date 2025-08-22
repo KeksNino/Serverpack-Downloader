@@ -18,8 +18,6 @@ modpack_id = {}
 url_dict = {}
 found = False
 
-print(data['data'][0])
-
 modpack_names = []
 for mod in data['data']:
     modpack_url = mod['links']['websiteUrl']
@@ -55,9 +53,19 @@ for mod in data['data']:
     if mod['name'] == selected_modpack_name:
         selected_modpack_id = mod['id']
         selected_url = mod['links']['websiteUrl']
-        break
 
 print(selected_modpack_id)
+
+
+r = requests.get(f"https://api.curseforge.com/v1/mods/{selected_modpack_id}/files", headers = headers)
+file_data = r.json()
+print(file_data)
+for file in file_data['data']:
+    # server_file = file['isServerPack']
+    server_file = file['serverPackFileId']
+    print (server_file)
+else:
+    print("No server pack found for this modpack.")
 
 # if answers is None:
 #     print("No selection made.")
