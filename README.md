@@ -5,6 +5,6 @@ CLI Downloader to download server packs from curseforge
 add your own api key to the .env file
 
 # Dependencies
-dotenv python library
-inquirer python library
+dotenv python library \n
+inquirer python library \n
 requests python library
