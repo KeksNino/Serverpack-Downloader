@@ -2,6 +2,7 @@ import requests
 import os
 from dotenv import load_dotenv
 import inquirer
+import zipfile
 
 load_dotenv()
 
@@ -57,6 +58,10 @@ if found == True:
         with open(f"{selected_modpack_name}-server.zip", 'wb') as f:
             for chunk in dl_response.iter_content(chunk_size=8192):
                 f.write(chunk)
+        with zipfile.ZipFile(f"{selected_modpack_name}-server.zip", 'r') as zip_ref:
+            zip_ref.extractall(f"{selected_modpack_name}-server")
+        os.remove(f"{selected_modpack_name}-server.zip")
+
         break
     else:
         print("No server pack found for this modpack.")
