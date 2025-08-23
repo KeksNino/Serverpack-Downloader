@@ -3,4 +3,3 @@ build
 dist
 main.spec
 venv
-main_own.py
