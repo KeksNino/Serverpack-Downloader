@@ -54,7 +54,7 @@ if found == True:
         download_url = file.json()['data']['downloadUrl']
         print(f"Download Url: {download_url}")
         dl_response = requests.get(download_url, stream=True)
-        with open(f"{selected_modpack_name}.zip", 'wb') as f:
+        with open(f"{selected_modpack_name}-server.zip", 'wb') as f:
             for chunk in dl_response.iter_content(chunk_size=8192):
                 f.write(chunk)
         break
