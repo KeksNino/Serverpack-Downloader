@@ -1,0 +1,11 @@
+[project]
+name = "serverpack-downloader"
+version = "0.1.0"
+description = "Download ServerPacks directly from curseforge"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "cloudscraper>=1.2.71",
+    "dotenv>=0.9.9",
+    "inquirer>=3.4.1",
+]
