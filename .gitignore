@@ -1,5 +1,3 @@
 .env
-build
-dist
-main.spec
-venv
+.build
+.dist
