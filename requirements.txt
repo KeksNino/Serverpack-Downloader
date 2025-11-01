@@ -1,3 +1,4 @@
-python-dotenv
-inquirer
-requests
+python-dotenv==1.2.1
+inquirer==3.4.1
+cloudscraper==1.2.71
+pyinstaller==6.16.0
